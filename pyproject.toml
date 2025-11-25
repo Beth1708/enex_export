@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling>=1.14.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "enex-export"
+version = "0.1.0"
+description = "Command-line tool scaffold (starter)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Your Name", email = "you@example.com" }
+]
+keywords = ["cli", "starter", "template"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Libraries :: Application Frameworks"
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+]
+
+[project.urls]
+Homepage = "https://example.com/enex-export"
+Repository = "https://example.com/enex-export/repo"
+
+[project.scripts]
+enex-export = "enex_export.cli:main"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "README.md", "LICENSE", "pyproject.toml"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/enex_export"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
