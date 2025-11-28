@@ -22,7 +22,9 @@ classifiers = [
   "Intended Audience :: Developers",
   "Topic :: Software Development :: Libraries :: Application Frameworks"
 ]
-dependencies = []
+dependencies = [
+    "sqlalchemy"
+]
 
 [project.optional-dependencies]
 dev = [

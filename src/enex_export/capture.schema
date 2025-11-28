@@ -1,0 +1,58 @@
+
+
+create table db_meta
+(
+  -- version 1.0
+    db_version text not null
+);
+
+CREATE TABLE doc_meta
+(
+    id          integer PRIMARY KEY,
+    title       text NOT NULL,
+    create_date timestamp,
+    update_date timestamp,
+    source_url text
+);
+
+CREATE TABLE attributes
+(
+    id          integer PRIMARY KEY,
+    doc_meta_id integer not null,
+    source       text,
+    source_url text,
+    FOREIGN KEY (doc_meta_id) references doc_meta (id) ON DELETE CASCADE
+);
+
+CREATE TABLE content_files
+(
+    id          integer PRIMARY KEY,
+    doc_meta_id integer not null,
+    filename        text,
+    content_type    text,
+    mime_type       text,
+    width           integer,
+    height          integer,
+    data            text,
+    FOREIGN KEY (doc_meta_id) references doc_meta (id) ON DELETE CASCADE
+);
+
+CREATE TABLE tag
+(
+    id          integer PRIMARY KEY,
+    tag text not null
+);
+
+
+CREATE TABLE doc_tag_link
+(
+    doc_id   integer not null,
+    tag_id integer not null,
+    FOREIGN KEY (doc_id) references doc_meta (id) ,
+    FOREIGN KEY (tag_id) references tag (id) ,
+    PRIMARY KEY (doc_id, tag_id)
+);
+
+
+
+
